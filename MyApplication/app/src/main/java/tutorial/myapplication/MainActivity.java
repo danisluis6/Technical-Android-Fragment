@@ -6,12 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import tutorial.myapplication.fragments.BottomFragment;
-
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private BottomFragment bottomFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar)this.findViewById(R.id.toolbar);
         this.setSupportActionBar(toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        bottomFragment = (BottomFragment)this.getSupportFragmentManager().findFragmentById(R.id.bottom_fragment);
     }
 
     @Override
@@ -40,9 +35,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void showText(String toptext, String bottomtext) {
-        bottomFragment.showText(toptext,bottomtext);
     }
 }
