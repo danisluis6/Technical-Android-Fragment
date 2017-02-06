@@ -1,36 +1,61 @@
 package tutorial.myapplication;
 
-import android.app.FragmentTransaction;
 import android.content.pm.ActivityInfo;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
-import tutorial.myapplication.fragments.DetailsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private static final String TAG = "MainActivity";
 
+    // Organization Fragment In Android
+    private Fragment detailsFragment;
+
+    private boolean isInitFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (isMultiPane()) {
-            DetailsFragment details = (DetailsFragment) getFragmentManager().findFragmentById(R.id.details);
-            if ( (details == null) || (details.getShownIndex() != index) ) {
-                details = DetailsFragment.newInstance(index);
-                Log.v(TAG, "about to run FragmentTransaction...");
-                FragmentTransaction ft = getFragmentManager().beginTransaction();CHAPTER 8: Fragments for Tablets and More
-                ft.setTransition(
-                        FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.replace(R.id.details, details);
-                ft.commit();
-            }
+        // Initial fragment
+        if(establishFragmentsAndroid()){
+            detailsFragment = new Fragment();
 
+        }
+
+        if(establishWidgetsAndroid()){
+            if (isMultiPane()) {
+
+            }
+        }else{
+            Log.d(TAG,"Null pointer Exception - findViewById()");
+        }
+    }
+
+    private boolean establishFragmentsAndroid() {
+        boolean valid = true;
+        try{
+
+        }catch (Exception ex){
+            valid = false;
+            ex.printStackTrace();
+        }
+        return valid;
+    }
+
+    private boolean establishWidgetsAndroid() {
+        boolean valid = true;
+        try{
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return valid;
     }
 
     public boolean isMultiPane(){

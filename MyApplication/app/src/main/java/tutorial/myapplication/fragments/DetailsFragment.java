@@ -19,23 +19,14 @@ import tutorial.myapplication.R;
 
 public class DetailsFragment extends Fragment{
 
-    private EditText inputTopImageText;
-    private EditText inputBottomImageText;
-    private Button buttonApply;
-
     private MainActivity mainActivity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_header,container,false);
+        View view = inflater.inflate(R.layout.activity_content,container,false);
         // Let 's establish some wigets
-        establishEvent();
         return view;
-    }
-
-    private void establishEvent() {
-        //
     }
 
     @Override
