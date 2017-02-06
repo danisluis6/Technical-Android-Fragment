@@ -2,10 +2,21 @@ package tutorial.myapplication;
 
 import android.content.pm.ActivityInfo;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+
+import tutorial.myapplication.fragments.BusinessFragment;
+import tutorial.myapplication.fragments.EntertainmentFragment;
+import tutorial.myapplication.fragments.HealthFragment;
+import tutorial.myapplication.fragments.PoliticsFragment;
+import tutorial.myapplication.fragments.SportsFragment;
+import tutorial.myapplication.fragments.TechFragment;
+import tutorial.myapplication.fragments.TopStoriesFragment;
+import tutorial.myapplication.fragments.WorldFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,18 +26,19 @@ public class MainActivity extends AppCompatActivity {
     // Organization Fragment In Android
     private Fragment detailsFragment;
 
-    private boolean isInitFragment;
+    private TopStoriesFragment topStoriesFragment
+    private WorldFragment worldFragment;
+    private BusinessFragment businessFragment;
+    private PoliticsFragment politicsFragment;
+    private EntertainmentFragment entertainmentFragment;
+    private SportsFragment sportsFragment;
+    private TechFragment techFragment;
+    private HealthFragment healthFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initial fragment
-        if(establishFragmentsAndroid()){
-            detailsFragment = new Fragment();
-
-        }
 
         if(establishWidgetsAndroid()){
             if (isMultiPane()) {
@@ -40,7 +52,16 @@ public class MainActivity extends AppCompatActivity {
     private boolean establishFragmentsAndroid() {
         boolean valid = true;
         try{
+            detailsFragment = new Fragment();
 
+            topStoriesFragment = new TopStoriesFragment();
+            worldFragment = new WorldFragment();
+            businessFragment = new BusinessFragment();
+            politicsFragment = new PoliticsFragment();
+            entertainmentFragment = new EntertainmentFragment();
+            sportsFragment = new SportsFragment();
+            techFragment = new TechFragment();
+            healthFragment = new HealthFragment();
         }catch (Exception ex){
             valid = false;
             ex.printStackTrace();
@@ -66,5 +87,11 @@ public class MainActivity extends AppCompatActivity {
             valid = false;
         }
         return valid;
+    }
+    public void switchFragment(Fragment fragment, boolean addToBackStack, int id) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(id, fragment);
+        ft.commit();
     }
 }
