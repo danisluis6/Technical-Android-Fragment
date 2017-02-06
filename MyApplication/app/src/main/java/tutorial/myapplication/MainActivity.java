@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import tutorial.myapplication.fragments.BottomFragment;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private BottomFragment bottomFragment;
+
+    private Button buttonOne;
+    private Button buttonTwo;
+
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
         this.setSupportActionBar(toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        bottomFragment = (BottomFragment)this.getSupportFragmentManager().findFragmentById(R.id.bottom_fragment);
+        frameLayout = (FrameLayout)this.findViewById(R.id.frameLayout);
+        buttonOne = (Button)this.findViewById(R.id.button_one);
+        buttonTwo = (Button)this.findViewById(R.id.button_two);
     }
 
     @Override
@@ -40,9 +46,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void showText(String toptext, String bottomtext) {
-        bottomFragment.showText(toptext,bottomtext);
     }
 }
