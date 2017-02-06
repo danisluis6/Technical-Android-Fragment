@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -43,11 +44,47 @@ public class TitlesFragment extends Fragment{
             }else{
                 // Todo
                 callArrayAdapterToShowData(listNews,listOfNews);
+
+                listOfNews.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String s = (String) parent.getItemAtPosition(position);
+                        switchNews(s);
+                    }
+                });
+
             }
         }
-
-        establishEvent();
         return view;
+    }
+
+    private void switchNews(String s) {
+        switch (s){
+            case "Top Stories":
+                mainActivity.setString("Top Stories");
+                break;
+            case "World":
+                mainActivity.setString("World");
+                break;
+            case "Business":
+                mainActivity.setString("Business");
+                break;
+            case "Politics":
+                mainActivity.setString("Politics");
+                break;
+            case "Entertainment":
+                mainActivity.setString("Entertainment");
+                break;
+            case "Sports":
+                mainActivity.setString("Sports");
+                break;
+            case "Sci/Tech":
+                mainActivity.setString("Sci/Tech");
+                break;
+            case "Health":
+                mainActivity.setString("Health");
+                break;
+        }
     }
 
     private void callArrayAdapterToShowData(List<String> listNews, ListView listOfNews) {
@@ -89,10 +126,6 @@ public class TitlesFragment extends Fragment{
             ex.printStackTrace();
         }
         return valid;
-    }
-
-    private void establishEvent() {
-        //
     }
 
     @Override
