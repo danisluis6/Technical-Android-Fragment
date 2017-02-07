@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     public void switchFragment(Fragment fragment, boolean addToBackStack, int id) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(id, fragment);
+        ft.add(id,fragment);
         ft.commit();
     }
     private boolean establishFragmentsAndroid() {
@@ -129,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
                     switchFragment(healthFragment, false, R.id.details);
                     break;
             }
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
         }
     }
 }
