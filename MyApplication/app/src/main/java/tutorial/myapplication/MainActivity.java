@@ -105,31 +105,30 @@ public class MainActivity extends AppCompatActivity {
         if(establishFragmentsAndroid()){
             switch (s){
                 case "Top Stories":
-                    switchFragment(topStoriesFragment, true, R.id.details);
+                    switchFragment(topStoriesFragment, false, R.id.details);
                     break;
                 case "World":
-                    switchFragment(worldFragment, true, R.id.details);
+                    switchFragment(worldFragment, false, R.id.details);
                     break;
                 case "Business":
-                    switchFragment(businessFragment, true, R.id.details);
+                    switchFragment(businessFragment, false, R.id.details);
                     break;
                 case "Politics":
-                    switchFragment(politicsFragment, true, R.id.details);
+                    switchFragment(politicsFragment, false, R.id.details);
                     break;
                 case "Entertainment":
-                    switchFragment(entertainmentFragment, true, R.id.details);
+                    switchFragment(entertainmentFragment, false, R.id.details);
                     break;
                 case "Sports":
-                    switchFragment(sportsFragment, true, R.id.details);
+                    switchFragment(sportsFragment, false, R.id.details);
                     break;
                 case "Sci/Tech":
-                    switchFragment(techFragment, true, R.id.details);
+                    switchFragment(techFragment, false, R.id.details);
                     break;
                 case "Health":
-                    switchFragment(healthFragment, true, R.id.details);
+                    switchFragment(healthFragment, false, R.id.details);
                     break;
             }
         }
-
     }
 }
