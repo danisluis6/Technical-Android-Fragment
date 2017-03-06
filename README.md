@@ -6,12 +6,3 @@ Technical-Android-Fragment
 https://drive.google.com/drive/folders/0B0zum0JxVnezT0pKZ2k4QVBTRVk
 
     - Research function add or addToBackFragment
-
-    @Override
-    public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ){
-            getFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-    }
